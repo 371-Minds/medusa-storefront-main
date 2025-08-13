@@ -3,59 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Storefront</title>
+    <title>Back-Alley Stacks</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>My Storefront</h1>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for books...">
-            <button>Search</button>
-        </div>
-        <div class="shopping-cart">
-            <a href="#">&#x1F6D2;</a>
-        </div>
-    </header>
-    <main>
-        <div class="book-grid">
-            <div class="book">
-                <img src="https://via.placeholder.com/150/92c9de/1a1a2e?text=Book+Cover" alt="Book cover">
-                <div class="book-details">
-                    <h3>The Midnight Library</h3>
-                    <p>Matt Haig</p>
-                    <p>$15.99</p>
-                </div>
+    <div id="app">
+        <section id="entrance-puzzle">
+            <div class="sign-container">
+                <h1 class="neon-sign" data-text="[CLOSED]">
+                    <span class="neon-flicker">[</span>CLOSED<span class="neon-flicker">]</span>
+                </h1>
             </div>
-            <div class="book">
-                <img src="https://via.placeholder.com/150/d9a5b3/1a1a2e?text=Book+Cover" alt="Book cover">
-                <div class="book-details">
-                    <h3>The Four Winds</h3>
-                    <p>Kristin Hannah</p>
-                    <p>$22.99</p>
-                </div>
+        </section>
+
+        <main id="speakeasy-lounge" class="hidden">
+            <div class="corridor">
+                <div class="door"></div>
+                <div class="door"></div>
+                <div class="door"></div>
             </div>
-            <div class="book">
-                <img src="https://via.placeholder.com/150/a5b3d9/1a1a2e?text=Book+Cover" alt="Book cover">
-                <div class="book-details">
-                    <h3>Project Hail Mary</h3>
-                    <p>Andy Weir</p>
-                    <p>$18.99</p>
-                </div>
-            </div>
-            <div class="book">
-                <img src="https://via.placeholder.com/150/b3d9a5/1a1a2e?text=Book+Cover" alt="Book cover">
-                <div class="book-details">
-                    <h3>Klara and the Sun</h3>
-                    <p>Kazuo Ishiguro</p>
-                    <p>$20.99</p>
-                </div>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2025 My Storefront</p>
-    </footer>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

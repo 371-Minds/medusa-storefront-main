@@ -1,105 +1,167 @@
-/* Basic styles for the storefront */
+/* 90s "Back-Alley Stacks" Styling */
+
+/* --- Fonts & Colors --- */
+:root {
+    --midnight-indigo: #0c0a2f;
+    --neon-magenta: #ff00ff;
+    --cyber-lime: #39ff14;
+    --scanline-bg: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 body {
-    background-color: #1a1a2e;
-    color: #e0e0e0;
-    font-family: sans-serif;
+    background-color: var(--midnight-indigo);
+    color: var(--cyber-lime);
+    font-family: 'VT323', monospace; /* A good, blocky, retro pixel font */
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #162447;
-    padding: 1rem;
+    overflow: hidden; /* Hide scrollbars */
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-h1 {
-    color: #e0e0e0;
-    margin: 0;
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://media.giphy.com/media/l41lH4ADRtAYn6vjq/giphy.gif'); /* VHS static GIF */
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1000;
 }
 
-main {
-    padding: 1rem;
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--scanline-bg);
+    pointer-events: none;
+    z-index: 999;
 }
 
-footer {
-    background-color: #162447;
-    padding: 1rem;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
+
+/* --- General Utility --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Entrance Puzzle --- */
+#entrance-puzzle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     width: 100%;
 }
 
-.search-bar {
-    display: flex;
-}
-
-.search-bar input {
-    width: 300px;
-    padding: 0.5rem;
-    border-radius: 5px 0 0 5px;
-    border: 1px solid #e0e0e0;
-    background-color: #1f4068;
-    color: #e0e0e0;
-}
-
-.search-bar button {
-    padding: 0.5rem 1rem;
-    border: 1px solid #e0e0e0;
-    background-color: #f0a500;
-    color: #1a1a2e;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-}
-
-.shopping-cart a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-size: 1.5rem;
-}
-
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 5rem; /* to avoid overlap with footer */
-}
-
-.book {
-    background-color: #1f4068;
-    padding: 1rem;
-    border-radius: 5px;
+.sign-container {
     text-align: center;
+}
+
+.neon-sign {
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--neon-magenta);
+    text-shadow:
+        0 0 5px var(--neon-magenta),
+        0 0 10px var(--neon-magenta),
+        0 0 20px var(--neon-magenta),
+        0 0 40px #fff,
+        0 0 70px #fff,
+        0 0 80px #fff,
+        0 0 100px #fff,
+        0 0 150px #fff;
     position: relative;
-    overflow: hidden;
 }
 
-.book img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.book-details {
+.neon-sign::before {
+    content: attr(data-text);
     position: absolute;
-    bottom: 0;
     left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #e0e0e0;
-    padding: 1rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
+    top: 0;
+    filter: blur(0.02em);
+    mix-blend-mode: screen;
 }
 
-.book:hover .book-details {
-    transform: translateY(0);
+.neon-flicker {
+    animation: flicker 1.5s infinite alternate;
 }
 
-.book-details h3, .book-details p {
-    margin: 0.5rem 0;
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 4px var(--neon-magenta),
+            0 0 11px var(--neon-magenta),
+            0 0 19px var(--neon-magenta),
+            0 0 40px #fff,
+            0 0 80px #fff,
+            0 0 90px #fff,
+            0 0 100px #fff,
+            0 0 150px #fff;
+        color: var(--neon-magenta);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+        color: #222;
+    }
+}
+
+/* --- Speakeasy Lounge --- */
+#speakeasy-lounge {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10%;
+    box-sizing: border-box;
+}
+
+.corridor {
+    display: flex;
+    gap: 50px;
+}
+
+.door {
+    width: 120px;
+    height: 220px;
+    background-color: #333;
+    border: 5px solid #555;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.door:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--cyber-lime);
+}
+
+.door::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background-color: #111;
+    border-radius: 50%;
+    border: 2px solid #888;
 }
